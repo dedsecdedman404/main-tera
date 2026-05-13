@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Tera | May 13</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* The Unmute Popup */
+        #unmute-overlay {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        #unmute-overlay:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="unmute-overlay" onclick="unmuteVideo()">
+        <span>🔊 Tap to hear music</span>
+    </div>
+
+    <video id="myVideo" autoplay muted loop playsinline>
+        <source src="mainTeraVidForHoor.MP4" type="video/mp4">
+    </video>
+
+    <script>
+        function unmuteVideo() {
+            const video = document.getElementById('myVideo');
+            const overlay = document.getElementById('unmute-overlay');
+            
+            // Unmute the video
+            video.muted = false;
+            
+            // Hide the popup
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
